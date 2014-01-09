@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageButton
+        android:id="@+id/imageButtonAide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imageButtonReglages"
+        android:src="@drawable/ic_aide" />
+
+    <ImageButton
+        android:id="@+id/imageButtonReglages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imageButtonMsg"
+        android:src="@drawable/ic_reglages" />
+
+    <ImageButton
+        android:id="@+id/imageButtonMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imageButtonRepertoire"
+        android:src="@drawable/ic_msg" />
+
+    <ImageButton
+        android:id="@+id/imageButtonRepertoire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="18dp"
+        android:src="@drawable/ic_repertoire" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButtonAide"
+        android:layout_alignLeft="@+id/imageButtonRepertoire"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/imageButtonAide"
+        android:layout_marginTop="54dp" >
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content" >
+        </ListView>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/btnSupprimerContact"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignRight="@+id/frameLayout1"
+        android:layout_alignTop="@+id/btnAjoutContact"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_supprimercontactmsg" />
+
+    <ImageView
+        android:id="@+id/btnAjoutContact"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:layout_toLeftOf="@+id/imageButtonAide"
+        android:src="@drawable/ic_ajoutcontactmsg" />
+
+</RelativeLayout>
