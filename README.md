@@ -1,1 +1,1 @@
-Application Android
+Application de chat sur Android
