@@ -18,9 +18,11 @@ public class UserFunctions {
 	// use http://10.0.2.2/ to connect to your localhost ie http://localhost/
 	private static String loginURL = "http://hussamandroid.net23.net/android_api/";
 	private static String registerURL = "http://hussamandroid.net23.net/android_api/";
+	private static String passwordResetURL = "http://hussamandroid.net23.net/android_api/";
 
 	private static String login_tag = "login";
 	private static String register_tag = "register";
+	private static String password_reset = "passwordReset";
 
 	// constructor
 	public UserFunctions() {
@@ -43,6 +45,23 @@ public class UserFunctions {
 		// return json
 //		 Log.e("JSON", json.toString());
 		return json;
+	}
+	
+	/**
+	 * function make password reset
+	 * 
+	 * @param email
+	 */
+	
+	public JSONObject passwordReset(String email){
+		// Building Parameters
+			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			params.add(new BasicNameValuePair("tag", password_reset));
+			params.add(new BasicNameValuePair("email", email));
+			JSONObject json = jsonParser.getJSONFromUrl(passwordResetURL, params);
+			// return json
+//				 Log.e("JSON", json.toString());
+			return json;
 	}
 
 	/**

@@ -151,8 +151,9 @@ public class RegisterActivity extends Activity {
 						finish();
 					} else {
 						// Error in registration
-						registerErrorMsg
-								.setText("Error occured in registration");
+//						registerErrorMsg
+//								.setText("Error occured in registration");
+						System.out.println("erreur");
 					}
 				}
 			} catch (JSONException e) {
