@@ -23,23 +23,11 @@ public class MainActivity extends Activity {
         if(userFunctions.isUserLoggedIn(getApplicationContext())){
        // user already logged in show databoard
         	
-        	Intent contactActivity = new Intent(getApplicationContext(), Contact.class);
-        	startActivity(contactActivity);
-//            setContentView(R.layout.activity_main);
-//            btnLogout = (Button) findViewById(R.id.btnLogout);
-//             
-//            btnLogout.setOnClickListener(new View.OnClickListener() {
-//                 
-//                public void onClick(View arg0) {
-//                    // TODO Auto-generated method stub
-//                    userFunctions.logoutUser(getApplicationContext());
-//                    Intent login = new Intent(getApplicationContext(), LoginActivity.class);
-//                    login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    startActivity(login);
-//                    // Closing dashboard screen
-//                    finish();
-//                }
-//            });
+        	Intent jabberActivity = new Intent(getApplicationContext(), MessagingActivity.class);
+        	startActivity(jabberActivity);
+        	
+//        	Intent contactActivity = new Intent(getApplicationContext(), Contact.class);
+//        	startActivity(contactActivity);
              
         }else{
             // user is not logged in show login screen

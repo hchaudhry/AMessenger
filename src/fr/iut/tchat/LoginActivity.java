@@ -1,17 +1,12 @@
 package fr.iut.tchat;
 
-import java.util.HashMap;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -46,18 +41,6 @@ public class LoginActivity extends Activity {
 		inputPassword = (EditText) findViewById(R.id.editTextMDP);
 		btnLogin = (Button) findViewById(R.id.btnConnexion);
 		btnLinkToRegister = (TextView) findViewById(R.id.txtInscrire);
-//		loginErrorMsg = (TextView) findViewById(R.id.login_error);
-		
-		// Suscribe button Click Event
-	    final TextView inscription = (TextView) findViewById(R.id.txtInscrire); 
-	    inscription.setOnClickListener(new OnClickListener() {
-	      
-	      
-	      public void onClick(View v) {
-	     Intent intent = new Intent(LoginActivity.this, Inscription.class);
-	     startActivity(intent);
-	     }
-	    });
 	    
 	    // Password forgot button Click Event
 	    final TextView mdpO = (TextView) findViewById(R.id.txtMDPoublie); 

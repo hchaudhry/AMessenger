@@ -58,8 +58,6 @@ public class RegisterActivity extends Activity {
 		inputPasswordCheck = (EditText) findViewById(R.id.editTextMDP2);
 		btnRegister = (Button) findViewById(R.id.btnSinscrire);
 		btnAnnuler = (Button) findViewById(R.id.btnAnnuler);
-		// btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
-		// registerErrorMsg = (TextView) findViewById(R.id.register_error);
 
 		// Register Button Click event
 		btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -94,18 +92,6 @@ public class RegisterActivity extends Activity {
 				inputPasswordCheck.setText("");
 			}
 		});
-
-		// Link to Login Screen
-		// btnLinkToLogin.setOnClickListener(new View.OnClickListener() {
-		//
-		// public void onClick(View view) {
-		// Intent i = new Intent(getApplicationContext(),
-		// LoginActivity.class);
-		// startActivity(i);
-		// // Close Registration View
-		// finish();
-		// }
-		// });
 	}
 
 	// AsyncTask
