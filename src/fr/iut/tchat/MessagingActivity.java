@@ -30,8 +30,8 @@ public class MessagingActivity extends Activity{
 	private final static String SERVER_HOST = "talk.google.com";
 	private final static int SERVER_PORT = 5222;
 	private final static String SERVICE_NAME = "gmail.com";	
-	private final static String LOGIN = "mail@gmail.com";
-	private final static String PASSWORD = "...";
+	private final static String LOGIN = "chaudhry.hussam@gmail.com";
+	private final static String PASSWORD = "";
 
 
 	private List<String> m_discussionThread;
