@@ -37,6 +37,7 @@
         </activity>
         
         <activity android:name="Contact"></activity>
+        <activity android:name="CreateContact"></activity>
         
         <activity android:name="Inscription"></activity>
         

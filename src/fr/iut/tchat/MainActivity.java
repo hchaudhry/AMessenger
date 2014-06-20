@@ -23,11 +23,11 @@ public class MainActivity extends Activity {
         if(userFunctions.isUserLoggedIn(getApplicationContext())){
        // user already logged in show databoard
         	
-        	Intent jabberActivity = new Intent(getApplicationContext(), MessagingActivity.class);
-        	startActivity(jabberActivity);
+//        	Intent messagingActivity = new Intent(getApplicationContext(), MessagingActivity.class);
+//        	startActivity(messagingActivity);
         	
-//        	Intent contactActivity = new Intent(getApplicationContext(), Contact.class);
-//        	startActivity(contactActivity);
+        	Intent contactActivity = new Intent(getApplicationContext(), Contact.class);
+        	startActivity(contactActivity);
              
         }else{
             // user is not logged in show login screen
