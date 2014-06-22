@@ -89,6 +89,12 @@ public class ContactDB
     {
         return db.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
     }
+    
+    //delete a record with email
+    public boolean deleteContactWithEmail(String email) 
+    {
+        return db.delete(DATABASE_TABLE, KEY_EMAIL + "='" + email + "'", null) > 0;
+    }
 
     //get all record
     public Cursor getAllContacts() 
@@ -102,6 +108,20 @@ public class ContactDB
         Cursor mCursor =
                 db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,KEY_NOM,KEY_PRENOM,KEY_EMAIL}, 
                         KEY_ROWID + "=" + rowId, 
+                        null, null, null, null, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+    
+    //get a record with email
+    public Cursor getContactsWithEmail(String email) throws SQLException 
+    {
+        Cursor mCursor =
+                db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,KEY_NOM,KEY_PRENOM,KEY_EMAIL}, 
+                        KEY_EMAIL + "=" + email, 
                         null, null, null, null, null);
 
         if (mCursor != null) {

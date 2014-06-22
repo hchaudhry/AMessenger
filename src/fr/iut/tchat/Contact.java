@@ -3,24 +3,19 @@ package fr.iut.tchat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import fr.iut.tchat.library.DatabaseHandler;
-import fr.iut.tchat.library.UserFunctions;
-import android.app.Activity;
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -56,6 +51,8 @@ public class Contact extends ListActivity {
 				android.R.layout.simple_list_item_1, ListContact));
 
 		PhonebookDB.close();
+		
+		registerForContextMenu(ContactsListView);
 
 		ContactsListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -69,6 +66,7 @@ public class Contact extends ListActivity {
 			}
 		});
 
+
 		btnAddContact.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -79,4 +77,28 @@ public class Contact extends ListActivity {
 			}
 		});
 	}
+	
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+    	super.onCreateContextMenu(menu, v, menuInfo);
+    	MenuInflater inflater = getMenuInflater();
+    	inflater.inflate(R.menu.menu_context, menu);
+    }
+    
+    public boolean onContextItemSelected(MenuItem item) {
+    	AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+    	String selectedWord = ((TextView) info.targetView).getText().toString();
+    	switch(item.getItemId()) {
+    	case R.id.edit:
+    		Toast.makeText(this, "edit", Toast.LENGTH_SHORT).show();
+//    		startActivity(new Intent(this, Help.class));
+    		return true;
+    	case R.id.delete:
+    		Intent i = new Intent(this, DeleteContact.class);
+    		i.putExtra("mail", selectedWord);
+    		startActivity(i);
+    		return true;
+    	default:
+    		return super.onContextItemSelected(item);
+    	}
+    }
 }

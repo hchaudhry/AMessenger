@@ -48,7 +48,9 @@ public final class R {
         public static final int btnSupprimerContact=0x7f080006;
         public static final int buttonLoadIMG=0x7f08001c;
         public static final int cancel=0x7f08000b;
+        public static final int delete=0x7f080034;
         public static final int eMailReset=0x7f08001e;
+        public static final int edit=0x7f080033;
         public static final int editTextEmail=0x7f080017;
         public static final int editTextMDP=0x7f080018;
         public static final int editTextMDP1=0x7f080028;
@@ -99,6 +101,7 @@ public final class R {
     }
     public static final class menu {
         public static final int main=0x7f070000;
+        public static final int menu_context=0x7f070001;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
