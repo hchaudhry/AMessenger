@@ -47,7 +47,7 @@
         android:layout_marginTop="54dp" >
 
         <ListView
-            android:id="@+id/contactsList"
+            android:id="@android:id/list"
             android:layout_width="282dp"
             android:layout_height="322dp" >
         </ListView>

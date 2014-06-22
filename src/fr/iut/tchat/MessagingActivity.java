@@ -16,7 +16,9 @@ import org.jivesoftware.smack.util.StringUtils;
 
 //import com.developpez.florentgarin.android.R;
 
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -31,7 +33,7 @@ public class MessagingActivity extends Activity{
 	private final static int SERVER_PORT = 5222;
 	private final static String SERVICE_NAME = "gmail.com";	
 	private final static String LOGIN = "chaudhry.hussam@gmail.com";
-	private final static String PASSWORD = "allergodil@";
+	private final static String PASSWORD = "";
 
 
 	private List<String> m_discussionThread;
@@ -52,6 +54,11 @@ public class MessagingActivity extends Activity{
 		}
 		
 		final EditText recipient = (EditText) this.findViewById(R.id.recipient);
+		
+		Intent i = getIntent();
+        String mail = i.getStringExtra("mail");
+        recipient.setText(mail);
+		
 		final EditText message = (EditText) this.findViewById(R.id.message);		
 		ListView list = (ListView) this.findViewById(R.id.thread);
 		

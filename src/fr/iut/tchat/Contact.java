@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import fr.iut.tchat.library.DatabaseHandler;
 import fr.iut.tchat.library.UserFunctions;
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,57 +23,60 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class Contact extends Activity {
+public class Contact extends ListActivity {
 
 	private ImageView btnAddContact;
 	private Cursor CursorList;
-    private ListView ContactsListView;
- 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.contact);
- 
-        btnAddContact = (ImageView) findViewById(R.id.btnAjoutContact);
-        
-        ContactsListView = (ListView)this.findViewById(R.id.contactsList);
-        List<String> ListContact = new ArrayList<String>();
+	private ListView ContactsListView;
 
-        ContactDB PhonebookDB = new ContactDB(this);
-        PhonebookDB.open();
-        CursorList = PhonebookDB.getAllContacts();
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.contact);
 
-        if (CursorList.moveToFirst()) 
-        {
-            do
-            {
-                ListContact.add(CursorList.getString(1).toString());
-            }while (CursorList.moveToNext());
-        }
+		btnAddContact = (ImageView) findViewById(R.id.btnAjoutContact);
 
-        ContactsListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ListContact));  
+		ContactsListView = (ListView) this.findViewById(android.R.id.list);
+		List<String> ListContact = new ArrayList<String>();
 
-        PhonebookDB.close();
-        
-        ContactsListView.setOnItemClickListener(new OnItemClickListener() {
+		ContactDB PhonebookDB = new ContactDB(this);
+		PhonebookDB.open();
+		CursorList = PhonebookDB.getAllContacts();
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				// TODO Auto-generated method stub
-				
+		if (CursorList.moveToFirst()) {
+			do {
+				ListContact.add(CursorList.getString(1).toString());
+			} while (CursorList.moveToNext());
+		}
+
+		ContactsListView.setAdapter(new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, ListContact));
+
+		PhonebookDB.close();
+
+		ContactsListView.setOnItemClickListener(new OnItemClickListener() {
+
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				String itemValue = ((TextView) view).getText().toString();
+				Intent i = new Intent(getApplicationContext(),
+						MessagingActivity.class);
+				i.putExtra("mail", itemValue);
+				startActivity(i);
 			}
 		});
-        
-        btnAddContact.setOnClickListener(new View.OnClickListener() {
+
+		btnAddContact.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(getApplicationContext(),CreateContact.class);
+				Intent intent = new Intent(getApplicationContext(),
+						CreateContact.class);
 				startActivity(intent);
 				finish();
 			}
 		});
-    }
+	}
 }
