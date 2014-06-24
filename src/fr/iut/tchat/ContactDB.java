@@ -14,8 +14,8 @@ public class ContactDB
 
     // define constants
     public static final String KEY_ROWID = "ContactID";
-    public static final String KEY_NOM= "FirstName";
-    public static final String KEY_PRENOM = "LastName";
+    public static final String KEY_NOM= "Nom";
+    public static final String KEY_PRENOM = "Prenom";
     public static final String KEY_EMAIL = "Email";
     private static final String TAG = "DBAdapter";
 
@@ -23,7 +23,7 @@ public class ContactDB
     private static final String DATABASE_TABLE = "Contacts";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String DATABASE_CREATE = "create table Contacts (ContactID integer primary key autoincrement, FirstName text not null, LastName text not null, Email text not null);";
+    private static final String DATABASE_CREATE = "create table Contacts (ContactID integer primary key autoincrement, Nom text not null, Prenom text not null, Email text not null);";
 
     private final Context context;  
 
@@ -121,7 +121,7 @@ public class ContactDB
     {
         Cursor mCursor =
                 db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,KEY_NOM,KEY_PRENOM,KEY_EMAIL}, 
-                        KEY_EMAIL + "=" + email, 
+                        KEY_EMAIL + "='" + email + "'", 
                         null, null, null, null, null);
 
         if (mCursor != null) {
@@ -131,12 +131,12 @@ public class ContactDB
     }
 
     //record update
-    public boolean updateContacts(long rowId, String FirstName, String LastName, String Nickname, String Mobile01) 
+    public boolean updateContacts(long rowId, String nom, String prenom, String email) 
     {
         ContentValues args = new ContentValues();
-        args.put(KEY_NOM, FirstName);
-        args.put(KEY_PRENOM, LastName);
-        args.put(KEY_EMAIL, Mobile01);
+        args.put(KEY_NOM, nom);
+        args.put(KEY_PRENOM, prenom);
+        args.put(KEY_EMAIL, email);
         return db.update(DATABASE_TABLE, args, 
                          KEY_ROWID + "=" + rowId, null) > 0;
     }

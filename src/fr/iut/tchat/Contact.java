@@ -89,8 +89,9 @@ public class Contact extends ListActivity {
     	String selectedWord = ((TextView) info.targetView).getText().toString();
     	switch(item.getItemId()) {
     	case R.id.edit:
-    		Toast.makeText(this, "edit", Toast.LENGTH_SHORT).show();
-//    		startActivity(new Intent(this, Help.class));
+    		Intent intentModify = new Intent(this, ModifyContact.class);
+    		intentModify.putExtra("mail", selectedWord);
+    		startActivity(intentModify);
     		return true;
     	case R.id.delete:
     		Intent i = new Intent(this, DeleteContact.class);
