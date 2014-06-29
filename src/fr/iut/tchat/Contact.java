@@ -3,6 +3,7 @@ package fr.iut.tchat;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.iut.tchat.library.UserFunctions;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,23 +17,28 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Contact extends ListActivity {
 
-	private ImageView btnAddContact;
+	private Button btnAddContact;
+	private Button logout;
 	private Cursor CursorList;
 	private ListView ContactsListView;
+	private UserFunctions userFunctions;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.contact);
 
-		btnAddContact = (ImageView) findViewById(R.id.btnAjoutContact);
+		userFunctions = new UserFunctions();
+		
+		btnAddContact = (Button) findViewById(R.id.btnAjoutContact);
+		logout = (Button) findViewById(R.id.logout);
 
 		ContactsListView = (ListView) this.findViewById(android.R.id.list);
 		List<String> ListContact = new ArrayList<String>();
@@ -76,6 +82,17 @@ public class Contact extends ListActivity {
 				finish();
 			}
 		});
+		
+		logout.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				userFunctions.logoutUser(getApplicationContext());
+				Intent login = new Intent(getApplicationContext(),
+						LoginActivity.class);
+				login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(login);
+				finish();
+			}
+		});
 	}
 	
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
@@ -101,5 +118,15 @@ public class Contact extends ListActivity {
     	default:
     		return super.onContextItemSelected(item);
     	}
+    }
+    
+    @Override
+    public void onRestart(){
+    	super.onRestart();
+    	
+    	Intent contact = new Intent(getApplicationContext(), Contact.class);
+		contact.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(contact);
+		finish();
     }
 }

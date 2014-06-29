@@ -46,7 +46,6 @@ public class ModifyContact extends Activity {
 			nomDB = contact.getString(contact.getColumnIndex("Nom"));
 			ContactID = contact.getString(contact.getColumnIndex("ContactID"));
 		}
-//        ContatsDB.close();
         
         prenom.setText(prenomDB);
         nom.setText(nomDB);

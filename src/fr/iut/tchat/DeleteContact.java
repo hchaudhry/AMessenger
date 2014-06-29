@@ -2,7 +2,6 @@ package fr.iut.tchat;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -16,13 +15,12 @@ public class DeleteContact extends Activity{
 		
 		Intent i = getIntent();
         String mail = i.getStringExtra("mail");
-        Toast.makeText(this, "edit: " + mail, Toast.LENGTH_SHORT).show();
         
-        final ContactDB ContatsDB = new ContactDB(this);
+        final ContactDB contatsDB = new ContactDB(this);
         
-        ContatsDB.open();
-        contactDel = ContatsDB.deleteContactWithEmail(mail);
-        ContatsDB.close();
+        contatsDB.open();
+        contactDel = contatsDB.deleteContactWithEmail(mail);
+        contatsDB.close();
 
         Intent intent = new Intent(getApplicationContext(), Contact.class);
 		startActivity(intent);

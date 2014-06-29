@@ -24,8 +24,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
+    private static final String KEY_PASS = "password";
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
+
+//	private final DatabaseHandler DBHandler = null;
+//	private SQLiteDatabase db;
  
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -38,6 +42,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_NAME + " TEXT,"
                 + KEY_EMAIL + " TEXT UNIQUE,"
+                + KEY_PASS + " TEXT,"
                 + KEY_UID + " TEXT,"
                 + KEY_CREATED_AT + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
@@ -56,12 +61,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String name, String email, String uid) {
+    public void addUser(String name, String email, String password, String uid) {
         SQLiteDatabase db = this.getWritableDatabase();
  
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name); // Name
         values.put(KEY_EMAIL, email); // Email
+        values.put(KEY_PASS, password);
         values.put(KEY_UID, uid); // Email
 //        values.put(KEY_CREATED_AT, created_at); // Created At
  
@@ -84,8 +90,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if(cursor.getCount() > 0){
             user.put("name", cursor.getString(1));
             user.put("email", cursor.getString(2));
-            user.put("uid", cursor.getString(3));
-            user.put("created_at", cursor.getString(4));
+            user.put("password", cursor.getString(3));
+            user.put("uid", cursor.getString(4));
+            user.put("created_at", cursor.getString(5));
         }
         cursor.close();
         db.close();
@@ -119,5 +126,4 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete(TABLE_LOGIN, null, null);
         db.close();
     }
- 
 }

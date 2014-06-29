@@ -1,7 +1,10 @@
 package fr.iut.tchat;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.PacketListener;
@@ -14,10 +17,8 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
 import org.jivesoftware.smack.util.StringUtils;
 
-//import com.developpez.florentgarin.android.R;
-
-
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,26 +27,56 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+import fr.iut.tchat.library.DatabaseHandler;
 
 public class MessagingActivity extends Activity{
 
 	private final static String SERVER_HOST = "talk.google.com";
 	private final static int SERVER_PORT = 5222;
 	private final static String SERVICE_NAME = "gmail.com";	
-	private final static String LOGIN = "chaudhry.hussam@gmail.com";
-	private final static String PASSWORD = "";
+	private static String LOGIN = "";
+	private static String PASSWORD = "";
 
 
 	private List<String> m_discussionThread;
 	private ArrayAdapter<String> m_discussionThreadAdapter;
 	private XMPPConnection m_connection;
 	private Handler m_handler;
+	private HashMap<String, String> userInfos;
+	private String userMail;
+	private String userPassword;
+	private EditText recipient;
 	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_messages);
+        
+        DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+        userInfos = db.getUserDetails();
+        
+        Iterator iter = userInfos.entrySet().iterator();
+        
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        
+		while (iter.hasNext()) {
+			Map.Entry mEntry = (Map.Entry) iter.next();
+			
+			if (mEntry.getKey() == "email") {
+				userMail = (String) mEntry.getValue();
+			}
+			
+			if (mEntry.getKey() == "password"){
+				userPassword = (String) mEntry.getValue();
+			}
+		}
+		
+		LOGIN = userMail;
+		PASSWORD = userPassword;
+		
         m_handler = new Handler();
 		try {
 			initConnection();
@@ -53,7 +84,7 @@ public class MessagingActivity extends Activity{
 			e.printStackTrace();
 		}
 		
-		final EditText recipient = (EditText) this.findViewById(R.id.recipient);
+		recipient = (EditText) this.findViewById(R.id.recipient);
 		
 		Intent i = getIntent();
         String mail = i.getStringExtra("mail");
@@ -100,9 +131,7 @@ public class MessagingActivity extends Activity{
 				public void processPacket(Packet packet) {
 					Message message = (Message) packet;
 					if (message.getBody() != null) {
-						String fromName = StringUtils.parseBareAddress(message
-								.getFrom());
-						m_discussionThread.add(fromName + ":");
+						m_discussionThread.add(recipient.getText().toString() + ":");
 						m_discussionThread.add(message.getBody());
 						
 						m_handler.post(new Runnable() {

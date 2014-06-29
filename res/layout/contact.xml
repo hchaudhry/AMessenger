@@ -3,73 +3,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageButton
-        android:id="@+id/imageButtonAide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/imageButtonReglages"
-        android:src="@drawable/ic_aide" />
-
-    <ImageButton
-        android:id="@+id/imageButtonReglages"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/imageButtonMsg"
-        android:src="@drawable/ic_reglages" />
-
-    <ImageButton
-        android:id="@+id/imageButtonMsg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/imageButtonRepertoire"
-        android:src="@drawable/ic_msg" />
-
-    <ImageButton
-        android:id="@+id/imageButtonRepertoire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="18dp"
-        android:src="@drawable/ic_repertoire" />
-
     <FrameLayout
         android:id="@+id/frameLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageButtonAide"
-        android:layout_alignLeft="@+id/imageButtonRepertoire"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/imageButtonAide"
         android:layout_marginTop="54dp" >
-
-        <ListView
-            android:id="@android:id/list"
-            android:layout_width="282dp"
-            android:layout_height="322dp" >
-        </ListView>
-
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/btnSupprimerContact"
-        android:layout_width="23dp"
-        android:layout_height="23dp"
-        android:layout_alignRight="@+id/frameLayout1"
-        android:layout_alignTop="@+id/btnAjoutContact"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/ic_supprimercontactmsg" />
-
-    <ImageView
+    <Button
         android:id="@+id/btnAjoutContact"
-        android:layout_width="23dp"
-        android:layout_height="23dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="18dp"
-        android:layout_toLeftOf="@+id/imageButtonAide"
-        android:src="@drawable/ic_ajoutcontactmsg" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/logout"
+        android:layout_alignBottom="@+id/logout"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="46dp"
+        android:text="Ajout" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginLeft="21dp"
+        android:layout_toRightOf="@+id/frameLayout1"
+        android:text="Déconnexion" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/frameLayout1"
+        android:layout_marginBottom="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_toRightOf="@+id/frameLayout1"
+        android:text="Liste des contacts"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="349dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/frameLayout1" >
+    </ListView>
 
 </RelativeLayout>

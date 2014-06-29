@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import fr.iut.tchat.library.DatabaseHandler;
 import fr.iut.tchat.library.UserFunctions;
 
@@ -24,12 +26,13 @@ public class LoginActivity extends Activity {
 
 	// JSON Response node names
 	private static String KEY_SUCCESS = "success";
-	private static String KEY_ERROR = "error";
-	private static String KEY_ERROR_MSG = "error_msg";
+//	private static String KEY_ERROR = "error";
+//	private static String KEY_ERROR_MSG = "error_msg";
 	private static String KEY_UID = "id";
 	private static String KEY_NAME = "first_name";
 	private static String KEY_EMAIL = "email";
-	private static String KEY_CREATED_AT = "created_at";
+	private static String kEY_PASS = "password";
+//	private static String KEY_CREATED_AT = "created_at";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -103,23 +106,23 @@ public class LoginActivity extends Activity {
 						userFunction.logoutUser(getApplicationContext());
 						db.addUser(json_user.getString(KEY_NAME),
 								json_user.getString(KEY_EMAIL),
+								json_user.getString(kEY_PASS),
 								json.getString(KEY_UID)
-//								json_user.getString(KEY_CREATED_AT)
 								);
 
-						// Launch Dashboard Screen
 						Intent dashboard = new Intent(getApplicationContext(),
 								MainActivity.class);
 
-						// Close all views before launching Dashboard
 						dashboard.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(dashboard);
 
-						// Close Login Screen
 						finish();
 					} else {
-						// Error in login
-						loginErrorMsg.setText("Incorrect username/password");
+						Context context = getApplicationContext();
+						CharSequence text = "Identifiants incorrects";
+						int duration = Toast.LENGTH_SHORT;
+						Toast toast = Toast.makeText(context, text, duration);
+						toast.show();
 					}
 				}
 			} catch (JSONException e) {

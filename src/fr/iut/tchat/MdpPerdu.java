@@ -3,7 +3,6 @@ package fr.iut.tchat;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.iut.tchat.library.DatabaseHandler;
 import fr.iut.tchat.library.Mail;
 import fr.iut.tchat.library.UserFunctions;
 import android.app.Activity;
@@ -15,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class MdpPerdu extends Activity {

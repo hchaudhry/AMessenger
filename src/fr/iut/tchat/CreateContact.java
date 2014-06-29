@@ -47,8 +47,8 @@ public class CreateContact extends Activity
                 intNewID = ContatsDB.insertContacts(strNom, strPrenom,strMail);
                 ContatsDB.close();
 
-                Intent IntentBack = new Intent();
-                setResult(RESULT_OK, IntentBack);
+                Intent Intent = new Intent(getApplicationContext(), Contact.class);
+                setResult(RESULT_OK, Intent);
                 finish();
             }
           });
@@ -56,6 +56,8 @@ public class CreateContact extends Activity
         CancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            	Intent Intent = new Intent(getApplicationContext(), Contact.class);
+                setResult(RESULT_OK, Intent);
                 finish();
             }
           });

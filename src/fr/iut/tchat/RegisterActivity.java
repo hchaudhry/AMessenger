@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,12 +34,13 @@ public class RegisterActivity extends Activity {
 
 	// JSON Response node names
 	private static String KEY_SUCCESS = "success";
-	private static String KEY_ERROR = "error";
-	private static String KEY_ERROR_MSG = "error_msg";
+//	private static String KEY_ERROR = "error";
+//	private static String KEY_ERROR_MSG = "error_msg";
 	private static String KEY_UID = "id";
 	private static String KEY_NAME = "first_name";
 	private static String KEY_EMAIL = "email";
-	private static String KEY_CREATED_AT = "created_at";
+	private static String KEY_PASS = "password";
+//	private static String KEY_CREATED_AT = "created_at";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -124,6 +124,7 @@ public class RegisterActivity extends Activity {
 						userFunction.logoutUser(getApplicationContext());
 						db.addUser(json_user.getString(KEY_NAME),
 								json_user.getString(KEY_EMAIL),
+								json_user.getString(KEY_PASS),
 								json.getString(KEY_UID)
 //								json_user.getString(KEY_CREATED_AT)
 								);
