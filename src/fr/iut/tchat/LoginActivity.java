@@ -26,13 +26,10 @@ public class LoginActivity extends Activity {
 
 	// JSON Response node names
 	private static String KEY_SUCCESS = "success";
-//	private static String KEY_ERROR = "error";
-//	private static String KEY_ERROR_MSG = "error_msg";
 	private static String KEY_UID = "id";
 	private static String KEY_NAME = "first_name";
 	private static String KEY_EMAIL = "email";
 	private static String kEY_PASS = "password";
-//	private static String KEY_CREATED_AT = "created_at";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -92,7 +89,6 @@ public class LoginActivity extends Activity {
 		protected void onPostExecute(JSONObject json) {
 			try {
 				if (json != null && json.getString(KEY_SUCCESS) != null) {
-//					loginErrorMsg.setText("");
 					String res = json.getString(KEY_SUCCESS);
 					if (Integer.parseInt(res) == 1) {
 						// user successfully logged in

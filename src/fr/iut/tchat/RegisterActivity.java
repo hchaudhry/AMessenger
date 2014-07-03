@@ -25,9 +25,9 @@ public class RegisterActivity extends Activity {
 	EditText inputFirstName;
 	EditText inputPseudo;
 	EditText inputEmail;
-	EditText inputEmailCheck;
+//	EditText inputEmailCheck;
 	EditText inputPassword;
-	EditText inputPasswordCheck;
+//	EditText inputPasswordCheck;
 	TextView registerErrorMsg;
 	private RadioGroup inputSex;
 	private RadioButton radioSexButton;
@@ -53,9 +53,9 @@ public class RegisterActivity extends Activity {
 		inputFirstName = (EditText) findViewById(R.id.editTextPrenom);
 		inputPseudo = (EditText) findViewById(R.id.EditTextPseudo);
 		inputEmail = (EditText) findViewById(R.id.editTextMail1);
-		inputEmailCheck = (EditText) findViewById(R.id.editTextMail2);
+//		inputEmailCheck = (EditText) findViewById(R.id.editTextMail2);
 		inputPassword = (EditText) findViewById(R.id.editTextMDP1);
-		inputPasswordCheck = (EditText) findViewById(R.id.editTextMDP2);
+//		inputPasswordCheck = (EditText) findViewById(R.id.editTextMDP2);
 		btnRegister = (Button) findViewById(R.id.btnSinscrire);
 		btnAnnuler = (Button) findViewById(R.id.btnAnnuler);
 
@@ -87,9 +87,9 @@ public class RegisterActivity extends Activity {
 				inputFirstName.setText("");
 				inputPseudo.setText("");
 				inputEmail.setText("");
-				inputEmailCheck.setText("");
+//				inputEmailCheck.setText("");
 				inputPassword.setText("");
-				inputPasswordCheck.setText("");
+//				inputPasswordCheck.setText("");
 			}
 		});
 	}

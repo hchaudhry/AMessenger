@@ -1,5 +1,9 @@
 package fr.iut.tchat;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,8 +45,15 @@ public class MdpPerdu extends Activity {
 
 			public void onClick(View view) {
 				String email = inputEmail.getText().toString();
-				new MyAsyncTask().execute(email);
-				
+				try {
+					new MyAsyncTask().execute(email).get(1000, TimeUnit.MILLISECONDS);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} catch (ExecutionException e) {
+					e.printStackTrace();
+				} catch (TimeoutException e) {
+					e.printStackTrace();
+				}
 				new EmailSendingTask().execute();
 			}
 		});
@@ -108,10 +119,10 @@ public class MdpPerdu extends Activity {
 		protected String doInBackground(String... params) {
 			
 			Mail m = new Mail("amessenger02@gmail.com", "@ltec77210");
-
+			
 			String[] toArr = { toSender };
 			m.setTo(toArr);
-			m.setFrom("amessenger02@gmail.com");
+			m.setFrom("chaudhry.hussam@gmail.com");
 			m.setSubject("Password recovery from AMessenger");
 			m.setBody("Your password is: " +messagePassword);
 

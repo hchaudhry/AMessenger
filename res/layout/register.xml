@@ -8,8 +8,8 @@
         android:id="@+id/imgView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds = "true"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        android:adjustViewBounds="true" >
     </ImageView>
 
     <TextView
@@ -22,31 +22,13 @@
         android:text="Votre Email" />
 
     <TextView
-        android:id="@+id/txtMail2"
+        android:id="@+id/txtMDP1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/txtInscrire"
         android:layout_below="@+id/txtMail1"
         android:layout_marginTop="14dp"
-        android:text="Confirmez Email" />
-
-    <TextView
-        android:id="@+id/txtMDP1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtMail2"
-        android:layout_below="@+id/txtMail2"
-        android:layout_marginTop="14dp"
         android:text="Mot de passe" />
-
-    <TextView
-        android:id="@+id/txtMDP2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtMDP1"
-        android:layout_below="@+id/txtMDP1"
-        android:layout_marginTop="14dp"
-        android:text="Confirmez mot de passe" />
 
     <TextView
         android:id="@+id/txtInscrire"
@@ -85,34 +67,12 @@
         android:text="Sexe" />
 
     <EditText
-        android:id="@+id/editTextMDP2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/txtMDP2"
-        android:layout_alignBottom="@+id/txtMDP2"
-        android:layout_alignLeft="@+id/btnSinscrire"
-        android:layout_alignRight="@+id/editTextMDP1"
-        android:ems="10"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/editTextMail2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/txtMail2"
-        android:layout_alignBottom="@+id/txtMail2"
-        android:layout_alignRight="@+id/EditTextPseudo"
-        android:layout_toRightOf="@+id/txtMail2"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
-
-    <EditText
         android:id="@+id/editTextMail1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/txtMail1"
         android:layout_alignBottom="@+id/txtMail1"
-        android:layout_alignRight="@+id/editTextMail2"
+        android:layout_alignRight="@+id/EditTextPseudo"
         android:layout_toRightOf="@+id/txtMDP1"
         android:ems="10"
         android:inputType="textEmailAddress" />
@@ -154,30 +114,10 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/txtMDP1"
         android:layout_alignBottom="@+id/txtMDP1"
-        android:layout_alignRight="@+id/editTextMail2"
-        android:layout_toRightOf="@+id/txtMail2"
+        android:layout_alignRight="@+id/EditTextPseudo"
+        android:layout_toRightOf="@+id/btnAnnuler"
         android:ems="10"
         android:inputType="textPassword" />
-
-    <Button
-        android:id="@+id/btnAnnuler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/txtMail2"
-        android:layout_marginBottom="17dp"
-        android:textSize="13dp"
-        android:text="Annuler" />
-
-    <Button
-        android:id="@+id/btnSinscrire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnAnnuler"
-        android:layout_alignBottom="@+id/btnAnnuler"
-        android:layout_toRightOf="@+id/txtMDP2"
-        android:textSize="13dp"
-        android:text="S&apos;inscrire" />
 
     <ImageView
         android:id="@+id/buttonLoadIMG"
@@ -192,10 +132,9 @@
         android:id="@+id/radioSexe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtSexe"
         android:layout_alignTop="@+id/txtSexe"
         android:layout_toRightOf="@+id/txtPrenom"
-        
-        android:layout_alignBottom="@+id/txtSexe"
         android:orientation="horizontal" >
 
         <RadioButton
@@ -213,5 +152,24 @@
             android:checked="true"
             android:text="M" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/btnSinscrire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnAnnuler"
+        android:layout_toRightOf="@+id/radioSexe"
+        android:text="S&apos;inscrire"
+        android:textSize="13dp" />
+
+    <Button
+        android:id="@+id/btnAnnuler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="17dp"
+        android:layout_toRightOf="@+id/txtNom"
+        android:text="Annuler"
+        android:textSize="13dp" />
 
 </RelativeLayout>
